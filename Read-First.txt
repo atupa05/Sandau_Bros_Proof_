@@ -1,0 +1,10 @@
+WELCOME TO PROOFPRO DEMO
+
+🟢 Step 1: Double click “START-HERE.html”
+🔵 Step 2: Enter your client's name, project name, date, revision #, and upload a file
+🟡 Step 3: Generate your proof
+🟣 Step 4: Download your finished proof
+
+✅ Takes <30 seconds
+✅ Shortcuts to access from hot bar and home page
+✅ Built to make your business look 10x more professional

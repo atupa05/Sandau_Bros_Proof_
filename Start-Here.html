@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Proof Generator Demo</title>      <!--Change Title-->
+<!-- potential font change v -->
+  <style>                   
+    @font-face {
+      font-family: 'Myriad Pro';            
+      src: url('assets/fonts/MyriadPro-Regular.woff') format('woff');
+    }
+    body {
+      font-family: 'Myriad Pro', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .input-group { margin: 10px 0; }
+    #canvasContainer { margin-top: 20px; }
+    canvas { border: 1px solid #ccc; }
+  </style>
+  <script src="assets/js/jspdf.umd.min.js"></script>
+  <script src="assets/js/proof1.js" defer></script>
+</head>
+<body>
+  <h1>Proof Generator Demo</h1>    <!--Change Header-->
+  <!-- Extra Inputs go here v -->
+  <div class="input-group">
+    <label>Client Name:</label>
+    <input type="text" id="clientName" />
+  </div>
+  <div class="input-group">
+    <label>Project Name:</label>
+    <input type="text" id="projectName" />
+  </div>
+  <div class="input-group">
+    <label>Date:</label>
+    <input type="text" id="date" />
+  </div>
+  <div class="input-group">
+    <label>Revision #:</label>
+    <input type="text" id="revision" />
+  </div>
+  <div class="input-group">
+    <label>Upload Artwork:</label>
+    <input type="file" id="artwork" accept="image/*" />
+  </div>
+
+  <button id="generateBtn">Generate Proof</button>
+  <button id="downloadLink" style="display:none;">Download PDF</button>
+
+  <div id="canvasContainer">
+    <canvas id="proofCanvas" width="1224" height="1584"></canvas>
+  </div>
+</body>
+</html>
