@@ -118,24 +118,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return alert('jsPDF failed to load.');
     }
 
-    const pdf = new jsPDF('portrait', 'pt', [canvas.width, canvas.height]);
+    const pdf     = new jsPDF('portrait', 'pt', [canvas.width, canvas.height]);
     const imgData = canvas.toDataURL('image/png');
     pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
 
-    // trick to force download
-    pdf.output('blob').then(blob => {
-      const url = URL.createObjectURL(blob);
-      const a   = document.createElement('a');
-      a.href     = url;
-      a.download = `${cleanClient}_${cleanProject}_proof.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      console.log('✅ Download triggered');
-    });
-  });
+    const blob = pdf.output('blob');
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = `${cleanClient}_${cleanProject}_proof.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 
+    console.log('✅ Download triggered');
+  });
 
   // 4) Prevent Enter from submitting the form
   document.querySelectorAll('input').forEach(i => {
@@ -143,4 +141,4 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Enter') e.preventDefault();
     });
   });
-});
+});  
