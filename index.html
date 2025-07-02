@@ -3,26 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proof Generator Demo</title>      <!--Change Title-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- 1. Custom Title -->
   <title>Proof Generator Demo</title>
-  
+
   <!-- 2. Favicon: both modern and legacy -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-<!-- potential font change v -->
-  <style>                   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    
-  .input-group { margin: 10px 0; }
-    #canvasContainer { margin-top: 20px; }
-    canvas { border: 1px solid #ccc; }
-    
+
   <!-- 3. Your Fonts & Styles -->
   <style>
     @font-face {
-      font-family: 'Myriad Pro';            
       font-family: 'Myriad Pro';
       src: url('assets/fonts/MyriadPro-Regular.woff') format('woff');
     }
@@ -31,13 +22,20 @@
       text-align: center;
       padding: 20px;
     }
- 
+
+    /* Moved from stray CSS in the body */
+    .input-group { margin: 10px 0; }
+    #canvasContainer { margin-top: 20px; }
+    canvas { border: 1px solid #ccc; }
+  </style>
+
   <script src="assets/js/jspdf.umd.min.js"></script>
   <script src="assets/js/proof1.js" defer></script>
 </head>
+
 <body>
   <h1>Proof Generator Demo</h1>    <!--Change Header-->
-  <!-- Extra Inputs go here v -->
+
   <div class="input-group">
     <label>Client Name:</label>
     <input type="text" id="clientName" />
