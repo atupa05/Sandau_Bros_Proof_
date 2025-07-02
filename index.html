@@ -4,36 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proof Generator Demo</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="shortcut icon" href="favicon.ico" />
 
   <style>
     @font-face {
       font-family: 'Myriad Pro';
       src: url('assets/fonts/MyriadPro-Regular.woff') format('woff');
     }
+
     body {
       font-family: 'Myriad Pro', sans-serif;
-      text-align: center;
+      background: #f0f0f0;
+      text-align: center; 
       padding: 20px;
       margin: 0;
+    }
+    .form-container {
+      display: inline-block;
+      text-align: left;   
+      padding: 20px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
     }
 
     .input-group {
       margin: 10px 0;
-      text-align: left;
     }
     .input-group label {
       display: inline-block;
       width: 100px;
     }
 
+    button {
+      margin: 10px 5px 0;
+      padding: 8px 16px;
+    }
+
+    /* Canvas container also centered by being inline-block */
     #canvasContainer {
-      margin-top: 20px;
+      display: inline-block;
+      margin-top: 30px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
     }
     canvas {
-      border: 1px solid #ccc;
-      width: 100%;
+      /* keep your natural size, but shrink if viewport is smaller */
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
       height: auto;
     }
   </style>
@@ -44,29 +66,31 @@
 <body>
   <h1>Proof Generator Demo</h1>
 
-  <div class="input-group">
-    <label for="clientName">Client Name:</label>
-    <input type="text" id="clientName" />
-  </div>
-  <div class="input-group">
-    <label for="projectName">Project Name:</label>
-    <input type="text" id="projectName" />
-  </div>
-  <div class="input-group">
-    <label for="date">Date:</label>
-    <input type="text" id="date" />
-  </div>
-  <div class="input-group">
-    <label for="revision">Revision #:</label>
-    <input type="text" id="revision" />
-  </div>
-  <div class="input-group">
-    <label for="artwork">Upload Artwork:</label>
-    <input type="file" id="artwork" accept="image/*" />
-  </div>
+  <div class="form-container">
+    <div class="input-group">
+      <label for="clientName">Client Name:</label>
+      <input type="text" id="clientName" />
+    </div>
+    <div class="input-group">
+      <label for="projectName">Project Name:</label>
+      <input type="text" id="projectName" />
+    </div>
+    <div class="input-group">
+      <label for="date">Date:</label>
+      <input type="text" id="date" />
+    </div>
+    <div class="input-group">
+      <label for="revision">Revision #:</label>
+      <input type="text" id="revision" />
+    </div>
+    <div class="input-group">
+      <label for="artwork">Upload Artwork:</label>
+      <input type="file" id="artwork" accept="image/*" />
+    </div>
 
-  <button id="generateBtn">Generate Proof</button>
-  <button id="downloadLink" style="display:none;">Download PDF</button>
+    <button id="generateBtn">Generate Proof</button>
+    <button id="downloadLink" style="display:none;">Download PDF</button>
+  </div>
 
   <div id="canvasContainer">
     <canvas id="proofCanvas" width="1224" height="1584"></canvas>
