@@ -110,30 +110,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // 3) Download button
-  downloadBtn.addEventListener('click', () => {
-    console.log('📥 Download clicked');
+downloadBtn.addEventListener('click', () => {
+  console.log('📥 Download clicked');
 
-    const { jsPDF } = window.jspdf || {};
-    if (!jsPDF) {
-      return alert('jsPDF failed to load.');
-    }
+  const { jsPDF } = window.jspdf || {};
+  if (!jsPDF) {
+    return alert('jsPDF failed to load.');
+  }
 
-    const pdf     = new jsPDF('portrait', 'pt', [canvas.width, canvas.height]);
-    const imgData = canvas.toDataURL('image/png');
-    pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+  // Render canvas into a PDF:
+  const pdf     = new jsPDF('portrait', 'pt', [canvas.width, canvas.height]);
+  const imgData = canvas.toDataURL('image/png');
+  pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
 
-    const blob = pdf.output('blob');
-    const url  = URL.createObjectURL(blob);
-    const a    = document.createElement('a');
-    a.href     = url;
-    a.download = `${cleanClient}_${cleanProject}_proof.pdf`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+  // Synchronously get a Blob:
+  const blob = pdf.output('blob');
 
-    console.log('✅ Download triggered');
-  });
+  // Force-download via temporary <a>:
+  const url = URL.createObjectURL(blob);
+  const a   = document.createElement('a');
+  a.href     = url;
+  a.download = `${cleanClient}_${cleanProject}_proof.pdf`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  console.log('✅ Download triggered');
+});
 
   // 4) Prevent Enter from submitting the form
   document.querySelectorAll('input').forEach(i => {
